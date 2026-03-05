@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
-    namespace 'com.github.nicolabeghin.materialspinner'
+    namespace 'fr.ganfra.materialspinner'
     compileSdkVersion 23
 
     defaultConfig {
