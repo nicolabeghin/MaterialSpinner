@@ -10,7 +10,7 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Build;
-import android.support.v7.widget.AppCompatSpinner;
+import androidx.appcompat.widget.AppCompatSpinner;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -148,7 +148,7 @@ public class MaterialSpinner extends AppCompatSpinner implements ValueAnimator.A
 
     private void initAttributes(Context context, AttributeSet attrs) {
 
-        TypedArray defaultArray = context.obtainStyledAttributes(new int[]{R.attr.colorControlNormal, R.attr.colorAccent});
+        TypedArray defaultArray = context.obtainStyledAttributes(new int[]{androidx.appcompat.R.attr.colorControlNormal, androidx.appcompat.R.attr.colorAccent});
         int defaultBaseColor = defaultArray.getColor(0, 0);
         int defaultHighlightColor = defaultArray.getColor(1, 0);
         int defaultErrorColor = context.getResources().getColor(R.color.error_color);
