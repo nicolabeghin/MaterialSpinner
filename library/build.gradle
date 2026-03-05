@@ -1,8 +1,9 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
+    namespace 'com.github.nicolabeghin.materialspinner'
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 11
@@ -15,11 +16,29 @@ android {
         }
     }
 
-
-    dependencies {
-        compile 'com.android.support:appcompat-v7:23.1.1'
-        compile 'com.android.support:recyclerview-v7:23.1.1'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    //apply from: '../maven_push.gradle'
+    dependencies {
+        implementation 'com.android.support:appcompat-v7:23.1.1'
+        implementation 'com.android.support:recyclerview-v7:23.1.1'
+    }
+}
+
+version = VERSION_NAME
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = GROUP
+                artifactId = POM_ARTIFACT_ID
+                version = project.version
+
+                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
+            }
+        }
+    }
 }
