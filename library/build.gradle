@@ -20,6 +20,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    publishing {
+        singleVariant('release')
+    }
 }
 
 dependencies {
@@ -32,12 +36,11 @@ version = VERSION_NAME
 afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication) {
+            maven(MavenPublication) {
+                from components.release
                 groupId = GROUP
                 artifactId = POM_ARTIFACT_ID
                 version = project.version
-
-                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
             }
         }
     }
